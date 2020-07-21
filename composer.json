@@ -1,0 +1,63 @@
+{
+    "name": "elbgoods/laravel-addressable",
+    "type": "library",
+    "description": "",
+    "keywords": [
+        "elbgoods",
+        "laravel-addressable",
+        "laravel",
+        "addressable",
+        "address"
+    ],
+    "homepage": "https://github.com/elbgoods/laravel-addressable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Witkowski",
+            "email": "twitkowski@elbgoods.de",
+            "homepage": "https://elbgoods.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Niclas Schirrmeister",
+            "email": "nschirrmeister@elbgoods.de",
+            "homepage": "https://elbgoods.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^6.0 || ^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0 || ^5.0",
+        "phpunit/phpunit": "^8.0 || ^9.0"
+    },
+    "suggest": {
+        "elbgoods/laravel-country-rule": "Allows to validate countries.",
+        "elbgoods/laravel-swiss-canton-rule": "Allows to validate swiss cantons."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Elbgoods\\LaravelAddressable\\AddressableServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Elbgoods\\LaravelAddressable\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Elbgoods\\LaravelAddressable\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
