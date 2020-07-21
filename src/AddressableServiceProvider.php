@@ -9,11 +9,9 @@ class AddressableServiceProvider extends ServiceProvider implements DeferrablePr
 {
     public function boot(): void
     {
-
     }
 
     public function register(): void
     {
-
     }
 }

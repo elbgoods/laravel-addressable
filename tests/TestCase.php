@@ -2,8 +2,8 @@
 
 namespace Elbgoods\LaravelAddressable\Tests;
 
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Elbgoods\LaravelAddressable\AddressableServiceProvider;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
