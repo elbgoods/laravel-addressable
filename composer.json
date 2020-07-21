@@ -27,6 +27,8 @@
     ],
     "require": {
         "php": "^7.4",
+        "elbgoods/laravel-country-rule": "^0.2.0",
+        "illuminate/database": "^6.0 || ^7.0",
         "illuminate/support": "^6.0 || ^7.0"
     },
     "require-dev": {
@@ -34,7 +36,6 @@
         "phpunit/phpunit": "^8.0 || ^9.0"
     },
     "suggest": {
-        "elbgoods/laravel-country-rule": "Allows to validate countries.",
         "elbgoods/laravel-swiss-canton-rule": "Allows to validate swiss cantons."
     },
     "config": {

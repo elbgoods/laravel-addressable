@@ -2,6 +2,7 @@
 
 namespace Elbgoods\LaravelAddressable;
 
+use Elbgoods\LaravelAddressable\Facades\AddressFormats;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,5 +14,6 @@ class AddressableServiceProvider extends ServiceProvider implements DeferrablePr
 
     public function register(): void
     {
+        $this->app->singleton(AddressFormats::class);
     }
 }
