@@ -24,6 +24,8 @@ class AddressFormats extends Manager
             $country = self::DEFAULT_DRIVER;
         }
 
+        $country = strtolower($country);
+
         try {
             return $this->driver($country);
         } catch(InvalidArgumentException $exception) {
