@@ -20,13 +20,13 @@ composer require elbgoods/laravel-addressable
 
 ## Usage
 
-``` php
+```php
 // Usage description here
 ```
 
 ### Testing
 
-``` bash
+```bash
 composer test
 ```
 
@@ -44,9 +44,9 @@ If you discover any security related issues, please email twitkowski@elbgoods.de
 
 ## Credits
 
-- [Tom Witkowski](https://github.com/Gummibeer)
-- [Niclas Schirrmeister](https://github.com/eisfeuer)
-- [All Contributors](../../contributors)
+-   [Tom Witkowski](https://github.com/Gummibeer)
+-   [Niclas Schirrmeister](https://github.com/eisfeuer)
+-   [All Contributors](../../contributors)
 
 ## License
 
