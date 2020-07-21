@@ -8,6 +8,7 @@ use Elbgoods\LaravelAddressable\Contracts\AddressFormat;
 use Elbgoods\LaravelAddressable\Facades\AddressFormats;
 use Elbgoods\LaravelAddressable\Managers\AddressFormats as AddressFormatsManager;
 use Elbgoods\LaravelAddressable\Tests\TestCase;
+use Illuminate\Support\Facades\Validator;
 
 final class AddressFormatsTest extends TestCase
 {
@@ -69,5 +70,26 @@ final class AddressFormatsTest extends TestCase
             'address.city',
             'address.state',
         ], $fields);
+    }
+
+    /** @test */
+    public function can_validate_german_address(): void
+    {
+        $data = [
+            'name' => 'Elbgoods GmbH',
+            'address' => [
+                'country_code' => 'DE',
+                'street' => 'Alter Wall',
+                'house_number' => '69',
+                'postal_code' => '20457',
+                'city' => 'Hamburg',
+            ],
+        ];
+
+        $validator = Validator::make($data, array_merge([
+            'name' => 'required|string',
+        ], AddressFormats::country($data['address']['country_code'])->rules('address')));
+
+        $this->assertFalse($validator->fails(), $validator->errors()->first());
     }
 }
