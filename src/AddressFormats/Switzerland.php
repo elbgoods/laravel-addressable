@@ -6,7 +6,6 @@ use Elbgoods\SwissCantonRule\Rules\SwissCantonAbbreviationRule;
 use Elbgoods\SwissCantonRule\Rules\SwissCantonZipCodeRule;
 use Faker\Generator;
 use Illuminate\Support\Arr;
-use Wnx\SwissCantons\Cantons;
 use Wnx\SwissCantons\ZipcodeSearch;
 
 class Switzerland extends BaseFormat
