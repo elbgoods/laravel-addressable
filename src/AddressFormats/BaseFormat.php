@@ -30,12 +30,12 @@ abstract class BaseFormat implements AddressFormat
 
     protected function applyPrefix(?string $prefix, array $array): array
     {
-        if(empty($prefix)) {
+        if (empty($prefix)) {
             return $array;
         }
 
         return collect($array)
-            ->mapWithKeys(fn($value, $key): array => [
+            ->mapWithKeys(fn ($value, $key): array => [
                 Str::finish($prefix, '.').$key => $value,
             ])
             ->all();

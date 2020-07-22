@@ -2,10 +2,8 @@
 
 namespace Elbgoods\LaravelAddressable\Tests\Models;
 
-use Elbgoods\LaravelAddressable\Models\Address;
 use Elbgoods\LaravelAddressable\Tests\TestCase;
 use Elbgoods\LaravelAddressable\Tests\Utils\Company;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 final class AddressableTest extends TestCase
 {

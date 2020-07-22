@@ -20,7 +20,7 @@ class AddressFormats extends Manager
 
     public function country(?string $country = null): AddressFormat
     {
-        if($country === null) {
+        if ($country === null) {
             $country = self::DEFAULT_DRIVER;
         }
 
@@ -28,8 +28,8 @@ class AddressFormats extends Manager
 
         try {
             return $this->driver($country);
-        } catch(InvalidArgumentException $exception) {
-            if($country === self::DEFAULT_DRIVER) {
+        } catch (InvalidArgumentException $exception) {
+            if ($country === self::DEFAULT_DRIVER) {
                 throw $exception;
             }
 

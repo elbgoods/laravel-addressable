@@ -37,7 +37,7 @@ final class Address extends Model
 
     public function getPropertiesAttribute($value): array
     {
-        if(empty($value)) {
+        if (empty($value)) {
             return [];
         }
 
@@ -46,7 +46,7 @@ final class Address extends Model
 
     public function setPropertiesAttribute($value): void
     {
-        if(empty($value)) {
+        if (empty($value)) {
             $this->attributes['properties'] = $this->asJson([]);
 
             return;
@@ -57,7 +57,7 @@ final class Address extends Model
 
     public function getAttribute($key)
     {
-        if($this->isFillableProperty($key)) {
+        if ($this->isFillableProperty($key)) {
             return $this->getAttribute('properties')[$key] ?? null;
         }
 
@@ -66,7 +66,7 @@ final class Address extends Model
 
     public function setAttribute($key, $value)
     {
-        if($this->isFillableProperty($key)) {
+        if ($this->isFillableProperty($key)) {
             $properties = $this->getAttribute('properties');
             $properties[$key] = $value;
             $this->setAttribute('properties', $properties);
@@ -79,11 +79,11 @@ final class Address extends Model
 
     public function isFillableProperty(string $key): bool
     {
-        if(in_array($key, array_keys($this->getAttributes()))) {
+        if (in_array($key, array_keys($this->getAttributes()))) {
             return false;
         }
 
-        if(!array_key_exists('country_code', $this->attributes)) {
+        if (! array_key_exists('country_code', $this->attributes)) {
             return false;
         }
 

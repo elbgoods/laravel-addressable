@@ -15,7 +15,7 @@ trait Addressable
     {
         static::created(function (Model $model): void {
             /** @var Model|Addressable $model */
-            if($model->pendingAddress === null) {
+            if ($model->pendingAddress === null) {
                 return;
             }
 
@@ -30,7 +30,7 @@ trait Addressable
 
     public function setAddressAttribute($value): void
     {
-        if(is_array($value)) {
+        if (is_array($value)) {
             $value = Address::fromArray($value);
         }
 

@@ -9,7 +9,7 @@ class AddressableServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        if($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole()) {
             if (! class_exists('CreateAddressesTable')) {
                 $timestamp = date('Y_m_d_His', time());
 

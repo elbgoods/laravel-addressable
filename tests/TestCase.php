@@ -4,8 +4,6 @@ namespace Elbgoods\LaravelAddressable\Tests;
 
 use CreateAddressesTable;
 use Elbgoods\LaravelAddressable\AddressableServiceProvider;
-use Elbgoods\LaravelAddressable\Managers\AddressFormats;
-use Elbgoods\LaravelAddressable\Models\Address;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
