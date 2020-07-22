@@ -2,9 +2,11 @@
 
 namespace Elbgoods\LaravelAddressable\Managers;
 
+use Elbgoods\LaravelAddressable\AddressFormats\CzechRepublic;
 use Elbgoods\LaravelAddressable\AddressFormats\Germany;
 use Elbgoods\LaravelAddressable\AddressFormats\International;
 use Elbgoods\LaravelAddressable\AddressFormats\Switzerland;
+use Elbgoods\LaravelAddressable\AddressFormats\UnitedStatesOfAmerica;
 use Elbgoods\LaravelAddressable\Contracts\AddressFormat;
 use Illuminate\Support\Manager;
 use Illuminate\Support\Str;
@@ -15,9 +17,11 @@ class AddressFormats extends Manager
     protected const DEFAULT_DRIVER = 'international';
 
     protected const FORMATS = [
-        'international' => International::class,
-        'de' => Germany::class,
-        'ch' => Switzerland::class,
+        self::DEFAULT_DRIVER => International::class,
+        'CH' => Switzerland::class,
+        'CZ' => CzechRepublic::class,
+        'DE' => Germany::class,
+        'US' => UnitedStatesOfAmerica::class,
     ];
 
     public function country(?string $country = null): AddressFormat
