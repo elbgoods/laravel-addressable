@@ -31,10 +31,17 @@ abstract class BaseFormat implements AddressFormat
 
     public function fake(string $country, array $data = []): array
     {
+        $faker = Factory::create([
+            'CH' => 'de_CH',
+            'CZ' => 'cs_CZ',
+            'DE' => 'de_DE',
+            'US' => 'en_US',
+        ][$country] ?? null);
+
         return Arr::only(
             array_merge(
                 ['country_code' => $country],
-                $this->factory(Factory::create()),
+                $this->factory($faker),
                 $data
             ),
             $this->fields()

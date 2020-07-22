@@ -47,7 +47,7 @@ class Switzerland extends BaseFormat
             'house_number' => $faker->buildingNumber,
             'postal_code' => strval(Arr::random(array_column((new ZipcodeSearch)->getDataSet(), 'zipcode'))),
             'city' => $faker->city,
-            'canton' => Arr::random(array_keys((new Cantons)->getAllAsArray())),
+            'canton' => $faker->cantonShort,
         ];
     }
 }

@@ -35,7 +35,7 @@ class Germany extends BaseFormat
             'country_code' => 'DE',
             'street' => $faker->streetName,
             'house_number' => $faker->buildingNumber,
-            'postal_code' => strval($faker->numberBetween(10000, 99999)),
+            'postal_code' => $faker->postcode,
             'city' => $faker->city,
         ];
     }
