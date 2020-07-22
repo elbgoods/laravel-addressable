@@ -13,24 +13,6 @@ use Illuminate\Support\Facades\Validator;
 final class AddressFormatsTest extends TestCase
 {
     /** @test */
-    public function can_instantiate_manager(): void
-    {
-        $this->assertInstanceOf(
-            AddressFormatsManager::class,
-            $this->app->make(AddressFormatsManager::class)
-        );
-    }
-
-    /** @test */
-    public function can_use_facade(): void
-    {
-        $this->assertInstanceOf(
-            AddressFormat::class,
-            AddressFormats::country()
-        );
-    }
-
-    /** @test */
     public function international_is_default_driver(): void
     {
         $this->assertInstanceOf(
@@ -60,7 +42,7 @@ final class AddressFormatsTest extends TestCase
     /** @test */
     public function applies_prefix_to_fields_array(): void
     {
-        $fields = AddressFormats::country()->fields('address');
+        $fields = AddressFormats::fields(null, 'address');
 
         $this->assertSame([
             'address.country_code',
@@ -88,7 +70,7 @@ final class AddressFormatsTest extends TestCase
 
         $validator = Validator::make($data, array_merge([
             'name' => 'required|string',
-        ], AddressFormats::country($data['address']['country_code'])->rules('address')));
+        ], AddressFormats::rules($data['address']['country_code'], 'address')));
 
         $this->assertFalse($validator->fails(), $validator->errors()->first());
     }

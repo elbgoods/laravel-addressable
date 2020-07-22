@@ -6,20 +6,26 @@ use Elbgoods\LaravelAddressable\Models\Address;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-/** @mixin Model */
+/**
+ * @property-read Address $address
+ *
+ * @mixin Model
+ */
 trait Addressable
 {
     protected ?Address $pendingAddress = null;
 
     public static function bootAddressable(): void
     {
-        static::created(function (Model $model): void {
+        static::saved(function (Model $model): void {
             /** @var Model|Addressable $model */
-            if ($model->pendingAddress === null) {
-                return;
+            if($model->address !== null) {
+                $model->setRelation('address', $model->address()->save($model->address));
             }
 
-            $model->address()->save($model->pendingAddress);
+            if($model->pendingAddress instanceof Address) {
+                $model->setRelation('address', $model->address()->save($model->pendingAddress));
+            }
         });
     }
 
@@ -30,16 +36,25 @@ trait Addressable
 
     public function setAddressAttribute($value): void
     {
-        if (is_array($value)) {
-            $value = Address::fromArray($value);
+        if (
+            $this->address !== null
+            && $this->address->exists
+        ) {
+            $address = $this->address->fill(
+                $value instanceof Address
+                    ? $value->toArray()
+                    : $value
+            );
+        } else {
+            $address = $value instanceof Address
+                ? $value
+                : $this->address()->make($value);
         }
 
-        if ($value instanceof Address) {
-            if ($this->exists) {
-                $this->address()->save($value);
-            } else {
-                $this->pendingAddress = $value;
-            }
+        if ($this->exists) {
+            $this->address = $address;
+        } else {
+            $this->pendingAddress = $address;
         }
     }
 }

@@ -28,6 +28,7 @@
     "require": {
         "php": "^7.4",
         "elbgoods/laravel-country-rule": "^0.2.0",
+        "elbgoods/laravel-swiss-canton-rule": "^0.4.0",
         "illuminate/database": "^6.0 || ^7.0",
         "illuminate/support": "^6.0 || ^7.0"
     },

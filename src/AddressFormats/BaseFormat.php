@@ -4,6 +4,9 @@ namespace Elbgoods\LaravelAddressable\AddressFormats;
 
 use Elbgoods\CountryRule\Rules\CountryAlpha2Rule;
 use Elbgoods\LaravelAddressable\Contracts\AddressFormat;
+use Faker\Factory;
+use Faker\Generator;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 abstract class BaseFormat implements AddressFormat
@@ -26,7 +29,21 @@ abstract class BaseFormat implements AddressFormat
         return $this->applyPrefix($prefix, $rules);
     }
 
+    public function fake(string $country, array $data = []): array
+    {
+        return Arr::only(
+            array_merge(
+                ['country_code' => $country],
+                $this->factory(Factory::create()),
+                $data
+            ),
+            $this->fields()
+        );
+    }
+
     abstract protected function formatConfig(): array;
+
+    abstract protected function factory(Generator $faker): array;
 
     protected function applyPrefix(?string $prefix, array $array): array
     {

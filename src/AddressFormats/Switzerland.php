@@ -2,9 +2,14 @@
 
 namespace Elbgoods\LaravelAddressable\AddressFormats;
 
+use Elbgoods\SwissCantonRule\Rules\SwissCantonAbbreviationRule;
+use Elbgoods\SwissCantonRule\Rules\SwissCantonZipCodeRule;
 use Faker\Generator;
+use Illuminate\Support\Arr;
+use Wnx\SwissCantons\Cantons;
+use Wnx\SwissCantons\ZipcodeSearch;
 
-class Germany extends BaseFormat
+class Switzerland extends BaseFormat
 {
     protected function formatConfig(): array
     {
@@ -20,11 +25,16 @@ class Germany extends BaseFormat
             'postal_code' => [
                 'required',
                 'string',
-                'regex:/^[0-9]{5}$/',
+                new SwissCantonZipCodeRule(),
             ],
             'city' => [
                 'required',
                 'string',
+            ],
+            'canton' => [
+                'required',
+                'string',
+                new SwissCantonAbbreviationRule()
             ],
         ];
     }
@@ -32,11 +42,12 @@ class Germany extends BaseFormat
     protected function factory(Generator $faker): array
     {
         return [
-            'country_code' => 'DE',
+            'country_code' => 'CH',
             'street' => $faker->streetName,
             'house_number' => $faker->buildingNumber,
-            'postal_code' => strval($faker->numberBetween(10000, 99999)),
+            'postal_code' => strval(Arr::random(array_column((new ZipcodeSearch)->getDataSet(), 'zipcode'))),
             'city' => $faker->city,
+            'canton' => Arr::random(array_keys((new Cantons)->getAllAsArray())),
         ];
     }
 }
