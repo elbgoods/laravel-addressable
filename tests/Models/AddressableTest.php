@@ -98,4 +98,27 @@ final class AddressableTest extends TestCase
         $this->assertSame('20457', $company->address->postal_code);
         $this->assertSame('Hamburg', $company->address->city);
     }
+
+    /** @test */
+    public function it_moves_all_properties_to_top_level_on_array(): void
+    {
+        $data = [
+            'country_code' => 'DE',
+            'street' => 'Alter Wall',
+            'house_number' => '69',
+            'postal_code' => '20457',
+            'city' => 'Hamburg',
+        ];
+
+        $company = Company::create([
+            'name' => 'Elbgoods GmbH',
+            'address' => $data,
+        ]);
+
+        $attributes = $company->address->toArray();
+        foreach($data as $attribute => $value) {
+            $this->assertArrayHasKey($attribute, $attributes);
+            $this->assertSame($value, $attributes[$attribute]);
+        }
+    }
 }

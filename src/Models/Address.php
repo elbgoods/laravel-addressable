@@ -82,4 +82,13 @@ final class Address extends Model
 
         return true;
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array = array_merge($array, $array['properties']);
+        unset($array['properties']);
+
+        return $array;
+    }
 }
