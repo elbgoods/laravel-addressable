@@ -116,7 +116,7 @@ final class AddressableTest extends TestCase
         ]);
 
         $attributes = $company->address->toArray();
-        foreach($data as $attribute => $value) {
+        foreach ($data as $attribute => $value) {
             $this->assertArrayHasKey($attribute, $attributes);
             $this->assertSame($value, $attributes[$attribute]);
         }
