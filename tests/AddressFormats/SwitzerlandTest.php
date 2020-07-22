@@ -3,7 +3,6 @@
 namespace Elbgoods\LaravelAddressable\Tests\AddressFormats;
 
 use Elbgoods\LaravelAddressable\Facades\AddressFormats;
-use Elbgoods\LaravelAddressable\Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
 
 final class SwitzerlandTest extends BaseFormatTest

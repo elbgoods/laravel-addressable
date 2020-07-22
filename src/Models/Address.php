@@ -30,7 +30,7 @@ final class Address extends Model
 
     protected static function booted()
     {
-        self::saving(function(Address $address): void {
+        self::saving(function (self $address): void {
             $address->properties = Arr::only($address->properties, AddressFormats::fields($address->country_code));
         });
     }
@@ -64,7 +64,7 @@ final class Address extends Model
 
     public function isFillableProperty(string $key): bool
     {
-        if(in_array($key, [
+        if (in_array($key, [
             'id',
             'country_code',
             'properties',

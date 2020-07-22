@@ -34,7 +34,7 @@ class Switzerland extends BaseFormat
             'canton' => [
                 'required',
                 'string',
-                new SwissCantonAbbreviationRule()
+                new SwissCantonAbbreviationRule(),
             ],
         ];
     }

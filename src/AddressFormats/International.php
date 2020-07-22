@@ -4,7 +4,6 @@ namespace Elbgoods\LaravelAddressable\AddressFormats;
 
 use Faker\Factory;
 use Faker\Generator;
-use Illuminate\Support\Arr;
 
 class International extends BaseFormat
 {

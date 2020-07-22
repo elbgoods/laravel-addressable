@@ -6,8 +6,6 @@ use Elbgoods\LaravelAddressable\AddressFormats\Germany;
 use Elbgoods\LaravelAddressable\AddressFormats\International;
 use Elbgoods\LaravelAddressable\AddressFormats\Switzerland;
 use Elbgoods\LaravelAddressable\Contracts\AddressFormat;
-use Faker\Factory;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -53,7 +51,7 @@ class AddressFormats extends Manager
 
         try {
             return parent::driver($driver);
-        } catch(InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             if ($driver === self::DEFAULT_DRIVER) {
                 throw $exception;
             }

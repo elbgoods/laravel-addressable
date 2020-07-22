@@ -19,11 +19,11 @@ trait Addressable
     {
         static::saved(function (Model $model): void {
             /** @var Model|Addressable $model */
-            if($model->address !== null) {
+            if ($model->address !== null) {
                 $model->setRelation('address', $model->address()->save($model->address));
             }
 
-            if($model->pendingAddress instanceof Address) {
+            if ($model->pendingAddress instanceof Address) {
                 $model->setRelation('address', $model->address()->save($model->pendingAddress));
             }
         });

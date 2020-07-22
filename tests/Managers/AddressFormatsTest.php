@@ -4,9 +4,7 @@ namespace Elbgoods\LaravelAddressable\Tests\Managers;
 
 use Elbgoods\LaravelAddressable\AddressFormats\Germany;
 use Elbgoods\LaravelAddressable\AddressFormats\International;
-use Elbgoods\LaravelAddressable\Contracts\AddressFormat;
 use Elbgoods\LaravelAddressable\Facades\AddressFormats;
-use Elbgoods\LaravelAddressable\Managers\AddressFormats as AddressFormatsManager;
 use Elbgoods\LaravelAddressable\Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
 
