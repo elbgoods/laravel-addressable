@@ -47,8 +47,6 @@ class AddressFormats extends Manager
 
     public function driver($driver = null): AddressFormat
     {
-        $driver = is_string($driver) ? strtolower($driver) : $driver;
-
         try {
             return parent::driver($driver);
         } catch (InvalidArgumentException $exception) {

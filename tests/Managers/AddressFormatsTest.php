@@ -24,7 +24,7 @@ final class AddressFormatsTest extends TestCase
     {
         $this->assertInstanceOf(
             Germany::class,
-            AddressFormats::country('de')
+            AddressFormats::country('DE')
         );
     }
 
